@@ -6,8 +6,8 @@ module.exports.ocr = async (event, context, callback) => {
     cachePath: "/tmp"
   });
 
-  // const dataBody = JSON.parse(event.body);
-  const dataBody = event;
+  const dataBody = JSON.parse(event.body);
+  // const dataBody = event;
 
   await worker.load();
   await worker.loadLanguage('eng');
