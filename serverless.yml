@@ -18,7 +18,7 @@ provider:
 functions:
   ocr:
     handler: handler.ocr
-    timeout: 20
+    timeout: 30
     events:
       - http:
           path: ocr

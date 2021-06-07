@@ -1,30 +1,13 @@
 const Tesseract = require('tesseract.js');
-const exec = require('child_process').exec;
-
-const child = () => {
-  exec('./test.sh', (error, stdout, stderr) => {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    if (error !== null) {
-          console.log('exec error: ' + error);
-    }
-  });
-}
-
-child();
 
 module.exports.ocr = async (event, context, callback) => {
   const worker = Tesseract.createWorker({
     logger: m => console.log(m),
-    langPath: '/tmp',
     cachePath: "/tmp"
   });
 
-  console.log(event.body);
-
-  const dataBody = JSON.parse(event.body);
-
-  console.log(dataBody);
+  // const dataBody = JSON.parse(event.body);
+  const dataBody = event;
 
   await worker.load();
   await worker.loadLanguage('eng');
